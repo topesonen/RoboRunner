@@ -190,7 +190,7 @@ class Game:
             self.screen.blit(door.img, (door.x, door.y))
 
         # draw the score
-        score_text = self.font.render(f'Score: {self.score}', True, (255, 0, 0))
+        score_text = self.font.render(f'Score: {self.score}', True, (224, 224, 224))
         self.screen.blit(score_text, (500, 10))
 
             # Draw the instructions
@@ -202,7 +202,7 @@ class Game:
         
         # Render each instruction and draw it on the screen
         for i, line in enumerate(instructions_text):
-            instruction_surface = self.font.render(line, True, (255, 0, 0))
+            instruction_surface = self.font.render(line, True, (224, 224, 224))
             self.screen.blit(instruction_surface, (10, 10 + i * 25))  # Position each line below the previous
 
         pygame.display.flip()
