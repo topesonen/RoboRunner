@@ -112,7 +112,7 @@ class Game:
             self.coins.append(Coin(coin_x, coin_y, self.coin_img))
 
         # randomly spawn monsters the the right side of screen
-        if random.random() > 0.995 and self.monster_timer <= 0:
+        if random.random() > 0.90 and self.monster_timer <= 0:
             
             monster_x = self.WIDTH
             
@@ -164,10 +164,9 @@ class Game:
                     self.score += 1
 
         for monster in self.monsters[:]:
-            if (abs(self.robot.x - 30 - monster.x) < self.robot.img.get_width() and 
-                abs(self.robot.y + 20 - monster.y) < self.robot.img.get_height()):
-                return True 
-
+                if (abs(self.robot.x - monster.x) < self.robot.img.get_width() - 20 and # some collision buffer here
+                    abs(self.robot.y - monster.y) < self.robot.img.get_height() - 20):
+                    return True 
         return False # game goes on
     
     def draw(self):
@@ -198,7 +197,7 @@ class Game:
         instructions_text = [
             "Up: Jump",
             "Down: Crouch",
-            "Space: Throw Door"
+            "Space: Shoot"
         ]
         
         # Render each instruction and draw it on the screen
@@ -220,7 +219,7 @@ class Game:
         self.screen.blit(game_over_text, text_rect)
         self.screen.blit(score_text, score_rect)
         pygame.display.flip()
-        pygame.time.wait(3000)  # Wait for 3 seconds before closing
+        pygame.time.wait(10000)  # Wait for 10 seconds before closing
 
     def play(self):
         running = True
