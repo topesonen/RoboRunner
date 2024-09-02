@@ -1,4 +1,13 @@
-# Complete your game here
+'''
+RoboRunner game
+
+Author: Topias Pesonen
+
+Purpose of the game is to collect coins while avoiding ghosts. The robot can shoot projectiles that kill ghosts.
+
+Have fun!
+
+'''
 import pygame
 import random
 
